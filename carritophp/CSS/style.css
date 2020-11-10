@@ -1,0 +1,22 @@
+.abs-center {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin-top: 50px;
+}
+
+.form {
+  width: 600px;
+}
+
+.warnings {
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  color: red;
+  padding-top: 20px;
+}
+
+h1 {
+  text-align: center;
+}

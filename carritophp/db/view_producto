@@ -1,0 +1,32 @@
+<h2 align="center" style="margin-top: 40px;">Catalogo de productos</h2>
+  <div class="container">
+    <table border="0" width="700" align="center" class="table">
+      <tr align="center">
+        <?php
+        $num = 0;
+        foreach ($lista as $reg) {
+          //Hacemos que cada 3 productos que haya un salto de fila(<tr>) y la variable
+          // num se vuelve en 1
+          if ($num == 3) {
+            echo "<tr align='center'>";
+            $num = 1;
+          } else {
+            $num++;
+          }
+        ?>
+          <th><img src="../imagenes/<?php echo $reg[6]; ?>" width="120" height="120"><br><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="enviar(<?php echo $reg[0]; ?>)">Agregar</button>
+          </th>
+
+
+        <?php
+
+        }
+
+        ?>
+      </tr>
+    </table>
+  </div>
+ 
+ 
+ 
+MOSTRAR PRODUCTOS

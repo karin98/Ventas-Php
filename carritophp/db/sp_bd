@@ -1,0 +1,91 @@
+DELIMITER $$
+CREATE PROCEDURE sp_ClienteCrear(
+ pnombre varchar(30),
+    pcorreo varchar (30),
+    ppasword varchar(30),
+	ptipoUsuario varchar(30),
+	pestado varchar(30),
+	pdni varchar(30)
+)
+    BEGIN
+    INSERT INTO clientes(
+    nombre,
+    correo,
+    pas,
+	tipoUsuario,
+	estado,
+	dni
+    )VALUES(
+    pnombre,
+    pcorreo,
+    ppasword,
+	ptipoUsuario,
+	pestado,
+	pdni
+    );
+    end$$
+	
+	call sp_ClienteCrear('Luca Montero','lmontero@gmail.com','lm7894');
+
+    
+  DELIMITER $$
+CREATE  PROCEDURE `sp_ProductoCrear`(
+pdsc varchar(100),
+pprecio numeric (8,2),    
+stock int,
+estado varchar (30),
+detalle varchar(1000),
+pimg varchar(50)
+)
+BEGIN
+INSERT INTO productos(
+descripcion,
+    precio,
+    stock,
+    estado,
+    detalle,
+    imagen
+) VALUES(
+pdsc,
+pprecio,    
+stock,
+estado,
+detalle,
+pimg
+);
+end$$
+
+call sp_ProductoCrear(
+'Cocina',500,10,'activo','Cocina de 4 hornillas','cocina4h.jpg'
+);
+/*PROCEDIMIENTO LOGUEO */
+
+DELIMITER $$
+CREATE PROCEDURE sp_logueo(
+pcorreo varchar(30),
+ppas varchar(30)
+)
+BEGIN
+SELECT COUNT(*) as existente FROM clientes WHERE correo=pcorreo and pas=ppas;
+END $$
+
+CALL sp_logueo ("mcontreras@gmail.com","123tr")
+
+/*PROCEDIMIENTO Producto */
+DELIMITER $$
+CREATE PROCEDURE sp_leerProducto()
+BEGIN
+SELECT descripcion,precio,detalle,imagen FROM productos;
+END $$
+
+CALL sp_leerProducto;
+
+CREATE PROCEDURE sp_DetalleProducto(
+pcodPro int    
+)
+BEGIN
+SELECT descripcion,precio,detalle,imagen from productos WHERE
+codPro=pcodPro;
+END
+call sp_DetalleProducto(7);
+

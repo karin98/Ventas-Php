@@ -1,0 +1,63 @@
+use tiendafc;
+
+CREATE TABLE productos (
+codPro int PRIMARY key AUTO_INCREMENT,
+descripcion varchar(100)not null,
+precio numeric(8,2)not null,
+stock int not null,
+estado varchar (30) not null,
+detalle varchar(1000)not null,
+imagen varchar(50)not null);
+
+insert into productos values(null,'Televisor',1800,10,'Normal',
+'Televisor de 19 pulgadas','televisor.jpg');
+
+insert into productos values(null,'Radio',1800,10,'Oferta',
+'Radio acuatica','radio.jpg');
+
+insert into productos values(null,'Licuador',200,10,'Normal',
+'Licuadora Oster','licuadora.jpg');
+
+create table clientes(
+codCli  int PRIMARY key AUTO_INCREMENT,
+nombre varchar(30)not null,
+correo varchar(30)not null,
+pas varchar(30)not null);
+
+insert into clientes values(
+null,'Juan Perez','juanperez@gmail.com','a1b2c3');
+
+
+
+create table pedido(
+numPedido  int PRIMARY key AUTO_INCREMENT,
+codCli int not null references clientes(codCli),
+fecha date not null);
+
+create table detallepedido(
+numPedido int not null,
+codPro int not null,
+can int not null,
+foreign key (numPedido) references pedido (numPedido),
+foreign key(codPro) references productos(codPro));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
